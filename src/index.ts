@@ -1,34 +1,20 @@
-import express from "express"
-import http from "http"
-import bodyParser from "body-parser"
-import cookieParser from "cookie-parser"
-import compression from 'compression'
-import cors from "cors"
+import express from 'express'
+import authRoutes from './routes/auth'
+import mongoose from 'mongoose'
 import 'dotenv/config'
-import mongoose from "mongoose"
-import { error } from "console"
 
 const app = express()
+app.use(express.json())
 
-app.use(cors({
-    credentials: true
-}))
+mongoose
+    .connect(process.env.MONGODB_URL || "")
+    .then(() => console.log("connected to mongodb"))
+    .catch((error) => console.log("mongodb connection error", error));
 
-app.use(compression())
-app.use(cookieParser())
-app.use(bodyParser.json())
+app.use("/api/vi/auth", authRoutes)
 
-const server = http.createServer(app)
+const port = process.env.PORT || 3000;
 
-server.listen(3000, () => {
-    console.log('Server running on server http://localhost:3000');
+app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
 })
-
-const mongo = process.env.MONGODB_URL
-
-mongoose.Promise = Promise
-mongoose.connect(mongo)
-mongoose.connection.on('error', (error: Error) => console.log(error))
-
-
-
