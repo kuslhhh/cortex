@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    /* Language and Environment */
+    "target": "es2022",                                  /* Modern JavaScript features */
+    "module": "commonjs",                                /* CommonJS for Node.js */
+    "rootDir": "./src",                                  /* Source files directory */
+    "outDir": "./dist",                                  /* Output directory */
+    "esModuleInterop": true,                             /* Better CommonJS/ES module interop */
+    "forceConsistentCasingInFileNames": true,            /* Prevent case-related bugs */
+    "strict": true,                                      /* Enable all strict type-checking */
+    "noUnusedLocals": true,                              /* Catch unused variables */
+    "noUnusedParameters": true,                          /* Catch unused function parameters */
+    "skipLibCheck": true,                                /* Skip type-checking library files */
+    "sourceMap": true,                                   /* Generate source maps for debugging */
+    "resolveJsonModule": true,                           /* Allow importing JSON files */
+    "declaration": true,                                 /* Generate .d.ts files */
+    "incremental": true                                  /* Faster builds with incremental compilation */
+  },
+  "include": ["src/**/*"],                               /* Include all files in src */
+  "exclude": ["node_modules"]                            /* Exclude node_modules */
+}
