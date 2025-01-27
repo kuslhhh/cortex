@@ -1,20 +1,34 @@
 import express from "express"
+import http from "http"
+import bodyParser from "body-parser"
+import cookieParser from "cookie-parser"
+import compression from 'compression'
+import cors from "cors"
+import 'dotenv/config'
+import mongoose from "mongoose"
+import { error } from "console"
 
-import jsonwebtoken from "jsonwebtoken"
-import { UserModel } from "./db/model";
+const app = express()
 
-const app = express();
+app.use(cors({
+    credentials: true
+}))
 
-app.post("/api/v1/signup")
+app.use(compression())
+app.use(cookieParser())
+app.use(bodyParser.json())
 
-app.post("/api/v1/signin" )
+const server = http.createServer(app)
 
-app.post("/api/v1/content" )
+server.listen(3000, () => {
+    console.log('Server running on server http://localhost:3000');
+})
 
-app.get("/api/v1/content" )
+const mongo = process.env.MONGODB_URL
 
-app.delete("/api/v1/content" )
+mongoose.Promise = Promise
+mongoose.connect(mongo)
+mongoose.connection.on('error', (error: Error) => console.log(error))
 
-app.post("api/v1/cortex/share" )
 
-app.get("api/v1/cortex/:shareLink" )
+
