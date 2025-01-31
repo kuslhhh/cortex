@@ -1,5 +1,6 @@
 import express from 'express'
 import authRoutes from './routes/auth'
+import contentRoutes from './routes/content'
 import mongoose from 'mongoose'
 import 'dotenv/config'
 
@@ -12,6 +13,7 @@ mongoose
     .catch((error) => console.log("mongodb connection error", error));
 
 app.use("/api/v1/auth", authRoutes)
+app.use("/api/v1", contentRoutes)
 
 const port = process.env.PORT || 3000;
 

@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import { UserModel } from "../models/user";
 import bcrypt from 'bcrypt'
 import jsonwebtoken from 'jsonwebtoken'
+import { JWT_PASS } from "../config";
 
 const router = express.Router()
 
@@ -32,7 +33,7 @@ router.post("/signin", async (req, res) => {
 
         const token = jsonwebtoken.sign(
             { userId: user._id },
-            process.env.JWT_SECRET || "secretKey",
+            JWT_PASS || "secretKey",
             { expiresIn: "1h" }
         );
 
