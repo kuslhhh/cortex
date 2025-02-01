@@ -4,19 +4,23 @@ import { ContentModel } from '../models/content';
 
 const router = express.Router()
 
-router.post("/content", userMiddleware, (req: Request, res: Response) => {
+router.post("/content", userMiddleware, async (req: Request, res: Response) => {
+    const { link, type } = req.body;
 
-    const link = req.body.link;
-    const type = req.body.type;
+    try {
+        await ContentModel.create({
+            link,
+            type,
+            // @ts-ignore
+            userId: req.userId,
+            tags: []
+        });
 
-    ContentModel.create({
-        link,
-        type,
-        userId: req.userId,
-        tag: []
-    })
-
-    res.json("Content added")
-})
+        res.status(201).json({ message: "Content added" });
+    } catch (error) {
+        console.error("Error adding content:", error);
+        res.status(500).json({ message: "Error adding content", error });
+    }
+});
 
 export default router
