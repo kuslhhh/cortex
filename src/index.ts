@@ -1,5 +1,6 @@
 import express from 'express'
 import authRoutes from './routes/auth'
+import shareRoutes from './routes/share'
 import contentRoutes from './routes/content'
 import mongoose from 'mongoose'
 import 'dotenv/config'
@@ -14,6 +15,7 @@ mongoose
 
 app.use("/api/v1/auth", authRoutes)
 app.use("/api/v1", contentRoutes)
+app.use("/api/v1/cell", shareRoutes)
 
 const port = process.env.PORT || 3000;
 
