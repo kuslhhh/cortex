@@ -6,3 +6,8 @@ export const signupSchema = z.object({
    username: z.string().min(3).max(20),
    password: z.string().regex(strongPassword)
 })
+
+export const signinSchema = z.object({
+   username: z.string().min(3).max(20),
+   password: z.string().regex(strongPassword)
+})
