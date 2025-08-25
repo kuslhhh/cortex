@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.use("/api/v1", authRoutes)
-// app.use("/api/v1/contents", contentRoutes)
+app.use("/api/v1/contents", contentRoutes)
 
 const PORT = process.env.PORT || 3000
 

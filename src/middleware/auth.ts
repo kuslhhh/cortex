@@ -13,7 +13,7 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
    try {
       const decoded = verifyToken(token);
       
-      (req as any).userId = decoded.userId;
+      (req as any).user = {id: decoded.userId};
       next()
    } catch {
       next(new AppError("Unauthorized: Invalid token", Responses.UNAUTHORIZED))
