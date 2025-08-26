@@ -1,7 +1,7 @@
 import type { NextFunction, Request, Response } from "express"
 import bcrypt from "bcryptjs"
 import { prisma } from "../../db"
-import { Responses } from "../../utils/types"
+import { Responses } from "../../types/types"
 import { signToken } from "../../utils/jwt"
 import { AppError } from "../../middleware/errorHandler"
 

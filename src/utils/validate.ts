@@ -11,3 +11,16 @@ export const signinSchema = z.object({
    username: z.string().min(3).max(20),
    password: z.string().regex(strongPassword)
 })
+
+export const addContentSchema = z.object({
+   type: z.enum(["document", "tweet", "youtube", "link"]),
+   link: z.string().url(),
+   title: z.string().min(1, "Title is requires"),
+   tags: z.array(z.string()).optional()
+})
+
+export const updateContentSchema = z.object({
+   title: z.string().min(1).optional(),
+   link: z.string().url().optional(),
+   tags: z.array(z.string()).optional()
+})

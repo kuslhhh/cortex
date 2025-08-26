@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from "express"
-import { Responses } from "../utils/types";
+import { Responses } from "../types/types";
 
 export class AppError extends Error {
    statusCode: number;

@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from "express"
 import { AppError } from "./errorHandler";
-import { Responses } from "../utils/types";
+import { Responses } from "../types/types";
 import { verifyToken } from "../utils/jwt";
 
 export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {

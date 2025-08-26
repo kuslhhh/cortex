@@ -1,7 +1,7 @@
 import type { NextFunction, Request, Response } from "express";
 import { prisma } from "../../db.js";
 import { AppError } from "../../middleware/errorHandler.js";
-import { Responses } from "../../utils/types.js";
+import { Responses } from "../../types/types.js";
 
 export const addContent = async (req: Request, res: Response, next: NextFunction) => {
    try {

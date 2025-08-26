@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from "express";
 import { prisma } from "../../db";
-import { Responses } from "../../utils/types";
+import { Responses } from "../../types/types";
 import { AppError } from "../../middleware/errorHandler";
 
 export const deleteContent = async (req: Request, res: Response, next: NextFunction) => {
