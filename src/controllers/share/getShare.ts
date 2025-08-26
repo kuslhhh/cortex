@@ -28,6 +28,7 @@ export const getShare = async (req: Request, res: Response, next: NextFunction) 
             type: c.type,
             link: c.link,
             title: c.title,
+            description: c.description,
             tags: c.tags.map(t => t.title)
          }))
       })

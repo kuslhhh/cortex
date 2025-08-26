@@ -8,7 +8,7 @@ export const updateContent = async (req: Request, res: Response, next: NextFunct
    try {
       const { id } = req.params;
       const userId = (req as any).userId;
-      const { title, tags } = req.body;
+      const { title,description, tags } = req.body;
 
       const content = await prisma.content.findFirst({
          where: { id: Number(id), userId }
@@ -20,6 +20,7 @@ export const updateContent = async (req: Request, res: Response, next: NextFunct
          where: { id: content.id },
          data: {
             title,
+            description,
             tags
          }
       });

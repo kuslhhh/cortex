@@ -16,11 +16,13 @@ export const addContentSchema = z.object({
    type: z.enum(["document", "tweet", "youtube", "link"]),
    link: z.url(),
    title: z.string().min(1, "Title is requires"),
+   description: z.string().optional(),
    tags: z.array(z.string()).optional()
 })
 
 export const updateContentSchema = z.object({
    title: z.string().min(1).optional(),
+   description: z.string().optional(),
    link: z.string().url().optional(),
    tags: z.array(z.string()).optional()
 })

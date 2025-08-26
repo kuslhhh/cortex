@@ -5,7 +5,9 @@ import { Responses } from "../../types/types.js";
 
 export const addContent = async (req: Request, res: Response, next: NextFunction) => {
    try {
-      const { type, link, title, tags } = req.body;
+      const { type, link, title, description, tags } = req.body;
+
+      console.log(req.body);
 
       if (!["document", "tweet", "youtube", "link"].includes(type)) {
          next(new AppError("Invalid content type", Responses.FORBIDDEN))
@@ -16,6 +18,7 @@ export const addContent = async (req: Request, res: Response, next: NextFunction
             type,
             link,
             title,
+            description,
             userId: req.user!.id,
             tags: {
                connectOrCreate: tags.map((tag: string) => ({

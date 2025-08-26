@@ -25,7 +25,8 @@ export const getContent = async (req: Request, res: Response, next: NextFunction
 
     if(search) {
       filters.OR = [
-         {title: {contains: search as string, mode: "insensitive"}}
+         {title: {contains: search as string, mode: "insensitive"}},
+         {description: {contains: search as string, mode: "insensitive"}}
       ]
     }
 
